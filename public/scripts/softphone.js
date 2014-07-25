@@ -396,6 +396,8 @@ $(function() {
 
     /* Listen for incoming connections */
     Twilio.Device.incoming(function (conn) {
+      console.log('incoming call here');
+      console.log(conn);
 
 
       // Update agent status 
@@ -419,7 +421,10 @@ $(function() {
       var sid = conn.parameters.CallSid
       var result = "";
       //sfdc screenpop fields are specific to new contact screenpop
-      desk.interaction.searchAndScreenPop(inboundnum, { channel: 'phone' });
+      desk.interaction.searchAndScreenPop({
+        searchString: inboundnum,
+        queryParams: { channel: 'phone' }
+      });
 
     });
 
