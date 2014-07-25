@@ -482,7 +482,7 @@ $(function() {
 
     function cleanInboundTwilioNumber(number) {
       //twilio inabound calls are passed with +1 (number). SFDC only stores 
-      return number.replace('+',''); 
+      return number.replace('+1',''); 
     }
 
     function cleanFormatting(number) { 
