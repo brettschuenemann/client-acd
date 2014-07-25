@@ -421,9 +421,9 @@ $(function() {
       var sid = conn.parameters.CallSid
       var result = "";
       //sfdc screenpop fields are specific to new contact screenpop
-      desk.interaction.searchAndScreenPop({
-        searchString: inboundnum,
-        queryParams: { channel: 'phone' }
+      desk.interaction.searchAndScreenPop(inboundnum, {
+        objectType: 'customer',
+        channel: 'phone'
       });
 
     });
@@ -482,7 +482,7 @@ $(function() {
 
     function cleanInboundTwilioNumber(number) {
       //twilio inabound calls are passed with +1 (number). SFDC only stores 
-      return number.replace('+1',''); 
+      return number.replace('+',''); 
     }
 
     function cleanFormatting(number) { 
