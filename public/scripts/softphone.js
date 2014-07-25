@@ -18,7 +18,7 @@ $(function() {
 
         // Get a Twilio Client name and register with Twilio
     SP.functions.getTwilioClientName = function(sfdcResponse) {
-        sforce.interaction.runApex('UserInfo', 'getUserName', '' , SP.functions.registerTwilioClient);
+        //sforce.interaction.runApex('UserInfo', 'getUserName', '' , SP.functions.registerTwilioClient);
     }
 
 
@@ -45,6 +45,11 @@ $(function() {
 
 
     }
+    desk.ready(function() {
+      var $win = $(window);
+      desk.interaction.cti.setSoftphoneWidth($win.outerWidth());
+      desk.interaction.cti.setSoftphoneHeight($win.outerHeight());
+    });
 
 
     SP.functions.startWebSocket = function() {
@@ -301,8 +306,11 @@ $(function() {
           SP.functions.registerTwilioClient(defaultclient);
       } else 
       {
+        var defaultclient = {}
+        defaultclient.result = SP.username;
+        SP.functions.registerTwilioClient(defaultclient);
         console.log("In an iframe, assume it is Salesforce");
-        sforce.interaction.isInConsole(SP.functions.getTwilioClientName);   
+        //sforce.interaction.isInConsole(SP.functions.getTwilioClientName);   
       }
     //this will only be called inside of salesforce
     
@@ -310,14 +318,14 @@ $(function() {
     
 
     Twilio.Device.ready(function (device) {
-      sforce.interaction.cti.enableClickToDial();
-      sforce.interaction.cti.onClickToDial(startCall); 
+      desk.interaction.cti.enableClickToDial();
+      desk.interaction.cti.onClickToDial(startCall); 
       SP.functions.ready();
     });
 
     Twilio.Device.offline(function (device) {
       //make a new status call.. something like.. disconnected instead of notReady ?
-      sforce.interaction.cti.disableClickToDial(); 
+      desk.interaction.cti.disableClickToDial(); 
       SP.functions.notReady();
       SP.functions.hideCallData();
     });
@@ -391,7 +399,7 @@ $(function() {
 
 
       // Update agent status 
-      sforce.interaction.setVisible(true);  //pop up CTI console
+      //sforce.interaction.setVisible(true);  //pop up CTI console
       SP.functions.updateAgentStatusText("ready", ( conn.parameters.From), true);
       // Enable answer button and attach to incoming call
       SP.functions.attachAnswerButton(conn);
@@ -411,7 +419,7 @@ $(function() {
       var sid = conn.parameters.CallSid
       var result = "";
       //sfdc screenpop fields are specific to new contact screenpop
-      sforce.interaction.searchAndScreenPop(inboundnum, 'con10=' + inboundnum + '&con12=' + inboundnum + '&name_firstcon2=' + name,'inbound');
+      desk.interaction.searchAndScreenPop(inboundnum, { channel: 'phone' });
 
     });
 
@@ -481,9 +489,9 @@ $(function() {
     function startCall(response) { 
             
             //called onClick2dial
-            sforce.interaction.setVisible(true);  //pop up CTI console
-            var result = JSON.parse(response.result);  
-            var cleanednumber = cleanFormatting(result.number);
+            //sforce.interaction.setVisible(true);  //pop up CTI console
+            //var result = JSON.parse(response.result);  
+            var cleanednumber = cleanFormatting(response.phoneNum);
 
 
             //alert("cleanednumber = " + cleanednumber);  
@@ -535,6 +543,6 @@ $(function() {
             }
             
             console.log("save params = " + saveParams);
-            sforce.interaction.saveLog('Task', saveParams, saveLogcallback);
+            //sforce.interaction.saveLog('Task', saveParams, saveLogcallback);
   }
 });
