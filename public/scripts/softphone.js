@@ -45,10 +45,12 @@ $(function() {
 
 
     }
+
+    console.log('hello world');
     desk.ready(function() {
-      var $win = $(window);
-      desk.interaction.cti.setSoftphoneWidth($win.outerWidth());
-      desk.interaction.cti.setSoftphoneHeight($win.outerHeight());
+      console.log('quick');
+      desk.interaction.cti.setSoftphoneWidth(600);
+      desk.interaction.cti.setSoftphoneHeight(600);
     });
 
 
