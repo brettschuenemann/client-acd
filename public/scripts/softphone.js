@@ -45,12 +45,6 @@ $(function() {
 
 
     }
-    desk.ready(function() {
-      var $win = $(window);
-      desk.interaction.cti.setSoftphoneWidth($win.outerWidth());
-      desk.interaction.cti.setSoftphoneHeight($win.outerHeight());
-    });
-
 
     SP.functions.startWebSocket = function() {
       // ** Agent Presence Stuff ** //
@@ -321,6 +315,13 @@ $(function() {
       desk.interaction.cti.enableClickToDial();
       desk.interaction.cti.onClickToDial(startCall); 
       SP.functions.ready();
+      desk.ready(function() {
+        var $phone = $('#softphone');
+        var width = $phone.outerWidth();
+        var height = $phone.outerHeight()
+        desk.interaction.cti.setSoftphoneWidth(width);
+        desk.interaction.cti.setSoftphoneHeight(height);
+      });
     });
 
     Twilio.Device.offline(function (device) {
