@@ -422,10 +422,7 @@ $(function() {
       var sid = conn.parameters.CallSid
       var result = "";
       //sfdc screenpop fields are specific to new contact screenpop
-      desk.interaction.searchAndScreenPop(inboundnum, {
-        objectType: 'customer',
-        channel: 'phone'
-      });
+      desk.interaction.searchAndScreenPop(inboundnum, 'object=customer');
 
     });
 
