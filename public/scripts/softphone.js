@@ -302,7 +302,10 @@ $(function() {
       } else
       {
         console.log("In an iframe, assume it is Salesforce");
-        sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
+         sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
+         var defaultclient = {}
++        defaultclient.result = SP.username;
++        SP.functions.registerTwilioClient(defaultclient);
       }
     //this will only be called inside of salesforce
 
