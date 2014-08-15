@@ -304,7 +304,7 @@ $(function() {
         defaultclient.result = SP.username;
         SP.functions.registerTwilioClient(defaultclient);
         console.log("In an iframe, assume it is Salesforce");
-        //sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
+        sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
       }
     //this will only be called inside of salesforce
 
@@ -363,7 +363,7 @@ $(function() {
         // return to waiting state
         SP.functions.hideCallData();
         SP.functions.ready();
-        //sforce.interaction.getPageInfo(saveLog);
+        sforce.interaction.getPageInfo(saveLog);
     });
 
     Twilio.Device.connect(function (conn) {
@@ -497,8 +497,8 @@ $(function() {
     function startCall(response) {
 
             //called onClick2dial
-            //sforce.interaction.setVisible(true);  //pop up CTI console
-            //var result = JSON.parse(response.result);
+            sforce.interaction.setVisible(true);  //pop up CTI console
+            var result = JSON.parse(response.result);
             var cleanednumber = cleanFormatting(response.result.number);
 
 
