@@ -312,12 +312,15 @@ $(function() {
     Twilio.Device.ready(function (device) {
       sforce.interaction.cti.enableClickToDial();
       sforce.interaction.cti.onClickToDial(startCall);
+      desk.interaction.cti.enableClickToDial();
+      desk.interaction.cti.onClickToDial(startCall);
       SP.functions.ready();
     });
 
     Twilio.Device.offline(function (device) {
       //make a new status call.. something like.. disconnected instead of notReady ?
       sforce.interaction.cti.disableClickToDial();
+      desk.interaction.cti.disableClickToDial();
       SP.functions.notReady();
       SP.functions.hideCallData();
     });
@@ -412,6 +415,7 @@ $(function() {
       var result = "";
       //sfdc screenpop fields are specific to new contact screenpop
       sforce.interaction.searchAndScreenPop(inboundnum, 'con10=' + inboundnum + '&con12=' + inboundnum + '&name_firstcon2=' + name,'inbound');
+      desk.interaction.searchAndScreenPop(inboundnum, 'object=customer');
 
     });
 
