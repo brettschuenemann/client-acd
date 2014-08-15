@@ -46,6 +46,12 @@ $(function() {
 
     }
 
+  desk.ready(function() {
+     var $win = $(window);
+      desk.interaction.cti.setSoftphoneWidth($win.outerWidth());
+      desk.interaction.cti.setSoftphoneHeight($win.outerHeight());
+    });
+
 
     SP.functions.startWebSocket = function() {
       // ** Agent Presence Stuff ** //
