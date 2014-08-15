@@ -304,7 +304,7 @@ $(function() {
         defaultclient.result = SP.username;
         SP.functions.registerTwilioClient(defaultclient);
         console.log("In an iframe, assume it is Salesforce");
-        sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
+        //sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
       }
     //this will only be called inside of salesforce
 
@@ -312,8 +312,6 @@ $(function() {
 
 
     Twilio.Device.ready(function (device) {
-      sforce.interaction.cti.enableClickToDial();
-      sforce.interaction.cti.onClickToDial(startCall);
       desk.interaction.cti.enableClickToDial();
       desk.interaction.cti.onClickToDial(startCall);
       SP.functions.ready();
@@ -323,16 +321,12 @@ $(function() {
         var height = $phone.outerHeight()
         desk.interaction.cti.setSoftphoneWidth(width);
         desk.interaction.cti.setSoftphoneHeight(height);
-        sforce.interaction.cti.setSoftphoneWidth(width);
-        sforce.interaction.cti.setSoftphoneHeight(height);
-
       });
     });
 
     Twilio.Device.offline(function (device) {
       //make a new status call.. something like.. disconnected instead of notReady ?
       desk.interaction.cti.disableClickToDial();
-      sforce.interaction.cti.disableClickToDial();
       SP.functions.notReady();
       SP.functions.hideCallData();
     });
@@ -428,8 +422,6 @@ $(function() {
       var sid = conn.parameters.CallSid
       var result = "";
       //sfdc screenpop fields are specific to new contact screenpop
-      sforce.interaction.searchAndScreenPop(inboundnum, 'con10=' + inboundnum + '&con12=' + inboundnum + '&name_firstcon2=' + name,'inbound');
-
       desk.interaction.searchAndScreenPop(inboundnum, 'object=customer');
 
     });
@@ -499,9 +491,9 @@ $(function() {
 
     function startCall(response) {
 
-            called onClick2dial
-            sforce.interaction.setVisible(true);  //pop up CTI console
-            var result = JSON.parse(response.result);
+            //called onClick2dial
+            //sforce.interaction.setVisible(true);  //pop up CTI console
+            //var result = JSON.parse(response.result);  
             var cleanednumber = cleanFormatting(response.result.number);
 
 
