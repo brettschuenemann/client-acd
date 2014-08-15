@@ -304,7 +304,7 @@ $(function() {
         defaultclient.result = SP.username;
         SP.functions.registerTwilioClient(defaultclient);
         console.log("In an iframe, assume it is Salesforce");
-        sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
+        //sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
       }
     //this will only be called inside of salesforce
 
@@ -314,8 +314,6 @@ $(function() {
     Twilio.Device.ready(function (device) {
       desk.interaction.cti.enableClickToDial();
       desk.interaction.cti.onClickToDial(startCall);
-      sforce.interaction.cti.enableClickToDial();
-      sforce.interaction.cti.onClickToDial(startCall);
       SP.functions.ready();
       desk.ready(function() {
         var $phone = $('#softphone');
@@ -323,15 +321,12 @@ $(function() {
         var height = $phone.outerHeight()
         desk.interaction.cti.setSoftphoneWidth(width);
         desk.interaction.cti.setSoftphoneHeight(height);
-        sforce.interaction.cti.setSoftphoneWidth(width);
-        sforce.interaction.cti.setSoftphoneHeight(height);
       });
     });
 
     Twilio.Device.offline(function (device) {
       //make a new status call.. something like.. disconnected instead of notReady ?
       desk.interaction.cti.disableClickToDial();
-      sforce.interaction.cti.disableClickToDial();
       SP.functions.notReady();
       SP.functions.hideCallData();
     });
@@ -363,7 +358,7 @@ $(function() {
         // return to waiting state
         SP.functions.hideCallData();
         SP.functions.ready();
-        sforce.interaction.getPageInfo(saveLog);
+        //sforce.interaction.getPageInfo(saveLog);
     });
 
     Twilio.Device.connect(function (conn) {
@@ -497,15 +492,15 @@ $(function() {
     function startCall(response) {
 
             //called onClick2dial
-            sforce.interaction.setVisible(true);  //pop up CTI console
-            var result = JSON.parse(response.result);
-            var cleanednumber = cleanFormatting(response.result.number);
+            //sforce.interaction.setVisible(true);  //pop up CTI console
+            //var result = JSON.parse(response.result);
+            var cleanednumber = cleanFormatting(response.phoneNum);
 
 
             //alert("cleanednumber = " + cleanednumber);
             params = {"PhoneNumber": cleanednumber, "CallerId": $("#callerid-entry > input").val()};
             Twilio.Device.connect(params);
-            $("#number-entry > input").val(cleanednumber);
+
     }
 
     var saveLogcallback = function (response) {
