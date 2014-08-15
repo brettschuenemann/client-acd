@@ -314,6 +314,8 @@ $(function() {
     Twilio.Device.ready(function (device) {
       desk.interaction.cti.enableClickToDial();
       desk.interaction.cti.onClickToDial(startCall);
+      sforce.interaction.cti.enableClickToDial();
+      sforce.interaction.cti.onClickToDial(startCall);
       SP.functions.ready();
       desk.ready(function() {
         var $phone = $('#softphone');
@@ -321,12 +323,15 @@ $(function() {
         var height = $phone.outerHeight()
         desk.interaction.cti.setSoftphoneWidth(width);
         desk.interaction.cti.setSoftphoneHeight(height);
+        sforce.interaction.cti.setSoftphoneWidth(width);
+        sforce.interaction.cti.setSoftphoneHeight(height);
       });
     });
 
     Twilio.Device.offline(function (device) {
       //make a new status call.. something like.. disconnected instead of notReady ?
       desk.interaction.cti.disableClickToDial();
+      sforce.interaction.cti.disableClickToDial();
       SP.functions.notReady();
       SP.functions.hideCallData();
     });
@@ -493,7 +498,7 @@ $(function() {
 
             //called onClick2dial
             //sforce.interaction.setVisible(true);  //pop up CTI console
-            //var result = JSON.parse(response.result);  
+            //var result = JSON.parse(response.result);
             var cleanednumber = cleanFormatting(response.result.number);
 
 
