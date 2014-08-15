@@ -52,18 +52,18 @@ $(function() {
      var wsaddress = 'wss://' + window.location.host  + "/websocket?clientname=" + SP.username
 
      var ws = new WebSocket(wsaddress);
-        
-      ws.onopen    = function()  { 
+
+      ws.onopen    = function()  {
           console.log('websocket opened');
        };
       ws.onclose   = function()  { console.log('websocket closed'); }
-      ws.onmessage = function(m) { 
+      ws.onmessage = function(m) {
         console.log('websocket message: ' +  m.data);
-        
+
         var result = JSON.parse(m.data);
 
         $("#team-status .queues-num").text(result.queuesize);
-        $("#team-status .agents-num").text(result.readyagents); 
+        $("#team-status .agents-num").text(result.readyagents);
       };
 
     }
@@ -74,11 +74,11 @@ $(function() {
     $("div.number").bind('click',function(){
       //$("#number-entry > input").val($("#number-entry > input").val()+$(this).attr('Value'));
       //pass key without conn to a function
-      SP.functions.handleKeyEntry($(this).attr('Value'));  
+      SP.functions.handleKeyEntry($(this).attr('Value'));
 
     });
 
-    SP.functions.handleKeyEntry = function (key) {  
+    SP.functions.handleKeyEntry = function (key) {
        if (SP.currentCall != null) {
           console.log("sending DTMF" + key);
           SP.currentCall.sendDigits(key);
@@ -205,13 +205,13 @@ $(function() {
     SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
         //do ajax request to hold for the conn.id
-         
+
          $.post("/request_unhold", { "from":SP.username, "callsid":holdid }, function(data) {
              //Todo: handle errors
              //Todo: change status in future
              //SP.functions.attachHoldButton(conn);
           });
-        
+
       }).removeClass('inactive').addClass("active").text("UnHold").show();
     }
 
@@ -226,8 +226,8 @@ $(function() {
     SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboundCall) {
 
       if (statusCategory == "ready") {
-           $("#agent-status-controls > button.ready").prop("disabled",true); 
-           $("#agent-status-controls > button.not-ready").prop("disabled",false); 
+           $("#agent-status-controls > button.ready").prop("disabled",true);
+           $("#agent-status-controls > button.not-ready").prop("disabled",false);
            $("#agent-status").removeClass();
            $("#agent-status").addClass("ready");
            $('#softphone').removeClass('incoming');
@@ -235,8 +235,8 @@ $(function() {
        }
 
       if (statusCategory == "notReady") {
-           $("#agent-status-controls > button.ready").prop("disabled",false); 
-           $("#agent-status-controls > button.not-ready").prop("disabled",true); 
+           $("#agent-status-controls > button.ready").prop("disabled",false);
+           $("#agent-status-controls > button.not-ready").prop("disabled",true);
            $("#agent-status").removeClass();
            $("#agent-status").addClass("not-ready");
            $('#softphone').removeClass('incoming');
@@ -244,14 +244,14 @@ $(function() {
       }
 
       if (statusCategory == "onCall") {
-          $("#agent-status-controls > button.ready").prop("disabled",true); 
-          $("#agent-status-controls > button.not-ready").prop("disabled",true); 
+          $("#agent-status-controls > button.ready").prop("disabled",true);
+          $("#agent-status-controls > button.not-ready").prop("disabled",true);
           $("#agent-status").removeClass();
           $("#agent-status").addClass("on-call");
           $('#softphone').removeClass('incoming');
       }
 
-      if (inboundCall ==  true) { 
+      if (inboundCall ==  true) {
         //alert("call from " + statusText);
         $('#softphone').addClass('incoming');
         $("#number-entry > input").val(statusText);
@@ -260,7 +260,7 @@ $(function() {
       //$("#agent-status > p").text(statusText);
     }
 
-    // Call button will make an outbound call (click to dial) to the number entered 
+    // Call button will make an outbound call (click to dial) to the number entered
     $("#action-buttons > button.call").click( function( ) {
       params = {"PhoneNumber": $("#number-entry > input").val(), "CallerId": $("#callerid-entry > input").val()};
       Twilio.Device.connect(params);
@@ -273,12 +273,12 @@ $(function() {
 
     // Wire the ready / not ready buttons up to the server-side status change functions
     $("#agent-status-controls > button.ready").click( function( ) {
-      $("#agent-status-controls > button.ready").prop("disabled",true); 
+      $("#agent-status-controls > button.ready").prop("disabled",true);
       SP.functions.ready();
     });
 
     $("#agent-status-controls > button.not-ready").click( function( ) {
-      $("#agent-status-controls > button.not-ready").prop("disabled",true); 
+      $("#agent-status-controls > button.not-ready").prop("disabled",true);
       SP.functions.notReady();
     });
 
@@ -293,27 +293,29 @@ $(function() {
     // first register outside of sfdc
 
 
-    if ( window.self === window.top ) {  
+    if ( window.self === window.top ) {
           console.log("Not in an iframe, assume we are using default client");
           var defaultclient = {}
           defaultclient.result = SP.username;
           SP.functions.registerTwilioClient(defaultclient);
-      } else 
+      } else
       {
         var defaultclient = {}
         defaultclient.result = SP.username;
         SP.functions.registerTwilioClient(defaultclient);
         console.log("In an iframe, assume it is Salesforce");
-        //sforce.interaction.isInConsole(SP.functions.getTwilioClientName);   
+        sforce.interaction.isInConsole(SP.functions.getTwilioClientName);
       }
     //this will only be called inside of salesforce
-    
 
-    
+
+
 
     Twilio.Device.ready(function (device) {
+      sforce.interaction.cti.enableClickToDial();
+      sforce.interaction.cti.onClickToDial(startCall);
       desk.interaction.cti.enableClickToDial();
-      desk.interaction.cti.onClickToDial(startCall); 
+      desk.interaction.cti.onClickToDial(startCall);
       SP.functions.ready();
       desk.ready(function() {
         var $phone = $('#softphone');
@@ -321,12 +323,16 @@ $(function() {
         var height = $phone.outerHeight()
         desk.interaction.cti.setSoftphoneWidth(width);
         desk.interaction.cti.setSoftphoneHeight(height);
+        sforce.interaction.cti.setSoftphoneWidth(width);
+        sforce.interaction.cti.setSoftphoneHeight(height);
+
       });
     });
 
     Twilio.Device.offline(function (device) {
       //make a new status call.. something like.. disconnected instead of notReady ?
-      desk.interaction.cti.disableClickToDial(); 
+      desk.interaction.cti.disableClickToDial();
+      sforce.interaction.cti.disableClickToDial();
       SP.functions.notReady();
       SP.functions.hideCallData();
     });
@@ -343,18 +349,18 @@ $(function() {
         console.log("disconnectiong...");
         SP.functions.updateAgentStatusText("ready", "Call ended");
 
-        
-        
+
+
         SP.state.callNumber = null;
-        
+
         // deactivate answer button
         SP.functions.detachAnswerButton();
         SP.functions.detachMuteButton();
         SP.functions.detachHoldButtons();
-        SP.functions.setIdleState(); 
-        
+        SP.functions.setIdleState();
+
         SP.currentCall = null;
-        
+
         // return to waiting state
         SP.functions.hideCallData();
         SP.functions.ready();
@@ -390,7 +396,7 @@ $(function() {
 
         //send status info
         $.post("/track", { "from":SP.username, "status":"OnCall" }, function(data) {
-            
+
         });
 
     });
@@ -401,7 +407,7 @@ $(function() {
       console.log(conn);
 
 
-      // Update agent status 
+      // Update agent status
       //sforce.interaction.setVisible(true);  //pop up CTI console
       SP.functions.updateAgentStatusText("ready", ( conn.parameters.From), true);
       // Enable answer button and attach to incoming call
@@ -412,7 +418,7 @@ $(function() {
         //auto answer
         SP.requestedHold = false;
         $("#action-buttons > button.answer").click();
-        
+
 
       }
 
@@ -422,6 +428,8 @@ $(function() {
       var sid = conn.parameters.CallSid
       var result = "";
       //sfdc screenpop fields are specific to new contact screenpop
+      sforce.interaction.searchAndScreenPop(inboundnum, 'con10=' + inboundnum + '&con12=' + inboundnum + '&name_firstcon2=' + name,'inbound');
+
       desk.interaction.searchAndScreenPop(inboundnum, 'object=customer');
 
     });
@@ -479,29 +487,29 @@ $(function() {
     /******** GENERAL FUNCTIONS for SFDC  ***********************/
 
     function cleanInboundTwilioNumber(number) {
-      //twilio inabound calls are passed with +1 (number). SFDC only stores 
-      return number.replace('+1',''); 
+      //twilio inabound calls are passed with +1 (number). SFDC only stores
+      return number.replace('+1','');
     }
 
-    function cleanFormatting(number) { 
-            //changes a SFDC formatted US number, which would be 415-555-1212       
+    function cleanFormatting(number) {
+            //changes a SFDC formatted US number, which would be 415-555-1212
             return number.replace(' ','').replace('-','').replace('(','').replace(')','').replace('+','');
         }
 
 
-    function startCall(response) { 
-            
-            //called onClick2dial
-            //sforce.interaction.setVisible(true);  //pop up CTI console
-            //var result = JSON.parse(response.result);  
+    function startCall(response) {
+
+            called onClick2dial
+            sforce.interaction.setVisible(true);  //pop up CTI console
+            var result = JSON.parse(response.result);
             var cleanednumber = cleanFormatting(response.result.number);
 
 
-            //alert("cleanednumber = " + cleanednumber);  
+            //alert("cleanednumber = " + cleanednumber);
             params = {"PhoneNumber": cleanednumber, "CallerId": $("#callerid-entry > input").val()};
             Twilio.Device.connect(params);
             $("#number-entry > input").val(cleanednumber);
-    } 
+    }
 
     var saveLogcallback = function (response) {
         if (response.result) {
@@ -513,38 +521,38 @@ $(function() {
 
 
     function saveLog(response) {
-            
+
             console.log("saving log result, response:");
             var result = JSON.parse(response.result);
 
             console.log(response.result);
-            
+
             var timeStamp = new Date().toString();
-            timeStamp = timeStamp.substring(0, timeStamp.lastIndexOf(':') + 3);             
-            var currentDate = new Date();           
+            timeStamp = timeStamp.substring(0, timeStamp.lastIndexOf(':') + 3);
+            var currentDate = new Date();
             var currentDay = currentDate.getDate();
             var currentMonth = currentDate.getMonth()+1;
             var currentYear = currentDate.getFullYear();
             var dueDate = currentYear + '-' + currentMonth + '-' + currentDay;
             var saveParams = 'Subject=' + SP.calltype +' Call on ' + timeStamp;
 
-            saveParams += '&Status=completed';                  
+            saveParams += '&Status=completed';
             saveParams += '&CallType=' + SP.calltype;  //should change this to reflect actual inbound or outbound
             saveParams += '&Activitydate=' + dueDate;
-            saveParams += '&Phone=' + SP.state.callNumber;  //we need to get this from.. somewhere      
-            saveParams += '&Description=' + "test description";   
+            saveParams += '&Phone=' + SP.state.callNumber;  //we need to get this from.. somewhere
+            saveParams += '&Description=' + "test description";
 
             console.log("About to parse  result..");
-            
+
             var result = JSON.parse(response.result);
             var objectidsubstr = result.objectId.substr(0,3);
             // object id 00Q means a lead.. adding this to support logging on leads as well as contacts.
             if(objectidsubstr == '003' || objectidsubstr == '00Q') {
-                saveParams += '&whoId=' + result.objectId;                    
+                saveParams += '&whoId=' + result.objectId;
             } else {
-                saveParams += '&whatId=' + result.objectId;            
+                saveParams += '&whatId=' + result.objectId;
             }
-            
+
             console.log("save params = " + saveParams);
             //sforce.interaction.saveLog('Task', saveParams, saveLogcallback);
   }
