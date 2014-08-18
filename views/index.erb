@@ -27,13 +27,20 @@
       height:40px; 
       width:55px;
     }
+    #logoWrapper {
+      margin-top:-10px;
+      color:#FFF;
+    }
   </style>
+
 </head>
 <body>
   <div id="client_name" hidden="true"><%= client_name %></div>
   <nav id="navBar" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
-      <span class="navbar-brand" href="#" style="margin-top:-10px;color:#FFF;"><img id="salesforceLogo" src="/salesforce-logo.png" style="" class="img-responsive" alt="Salesforce" /> OpenCTI</span>
+      <span id="logoWrapper" class="navbar-brand" href="#">
+        <img id="salesforceLogo" src="/salesforce-logo.png" style="" class="img-responsive" alt="Salesforce" /> OpenCTI
+      </span>
     </div>
   </nav>
   <div id="softphone" class="softphone">
