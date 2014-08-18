@@ -117,7 +117,7 @@ div.agent-status {
 }
 
 #dialer {
-  border: solid 1px #ddd;
+  border: solid 1px #59616d;
   border-width: 0 0 0 1px;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
