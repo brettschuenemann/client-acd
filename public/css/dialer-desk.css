@@ -65,7 +65,7 @@ div.agent-status {
 
 input {
   background-color:#343c44;
-  border-bottom: 1px solid #59616d;
+  border: 1px solid #59616d;
   text-shadow: none;  
   text-align: center;
   box-shadow: none;
