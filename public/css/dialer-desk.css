@@ -135,7 +135,13 @@ input {
 }
 
 .powered-by {
+  display:none;
+}
 
+.powered-by-dark {
+  display:block;
+  text-align: right;
+  padding: 10px 0;
 }
 
 img {

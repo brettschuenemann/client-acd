@@ -315,6 +315,10 @@ input {
   padding: 10px 0;
 }
 
+.powered-by-dark {
+display:none;
+}
+
 img {
   width: 100px;
 }
