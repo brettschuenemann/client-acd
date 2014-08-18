@@ -18,6 +18,10 @@ body {
 
 }
 
+button {
+  text-transform: uppercase;
+}
+
 button.agent-status {
 
 }
@@ -99,7 +103,7 @@ input {
 }
 
 #action-buttons button {
-    text-transform: uppercase;
+
 }
 
 #action-buttons .call {
