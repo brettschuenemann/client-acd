@@ -97,8 +97,9 @@ input {
   font-size: 21px;
   width: 33.333333333%;
   background-image: none;
-  background-color: #333;
-  text-shadow: none
+  background-color:#343c44;
+  border: 1px #ccc;
+  text-shadow: none;
   text-align: center;
   box-shadow: none;
 }
