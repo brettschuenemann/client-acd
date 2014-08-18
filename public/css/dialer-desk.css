@@ -2,8 +2,12 @@ body {
 
 }
 
-#softphone {
+#container {
   background-color:#343c44;
+}
+
+#softphone {
+
 }
 
 #agent-status-controls {
