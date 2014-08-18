@@ -326,6 +326,7 @@ $(function() {
       sforce.interaction.cti.onClickToDial(startCall);
       desk.interaction.cti.enableClickToDial();
       desk.interaction.cti.onClickToDial(startCall);
+      console.log('imhere');
       desk.interaction.cti.setSoftphoneHeight(600);
       desk.interaction.cti.setSoftphoneWidth(300);
       SP.functions.ready();
