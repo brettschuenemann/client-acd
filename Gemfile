@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-gem 'rails', '4.0.2'
 gem 'sinatra'
 gem 'twilio-ruby'
 gem 'json'
