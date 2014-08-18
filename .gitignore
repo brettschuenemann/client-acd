@@ -2,7 +2,6 @@
 config_file.yml
 
 
-client-acd.sublime-project
 Procfile
-
+*.sublime-project
 *.sublime-workspace
