@@ -4,7 +4,6 @@ body {
 
 #wrapper {
   background-color:#343c44;
-  text-transform: uppercase;
 }
 
 #softphone {
@@ -100,7 +99,7 @@ input {
 }
 
 #action-buttons button {
-
+    text-transform: uppercase;
 }
 
 #action-buttons .call {
