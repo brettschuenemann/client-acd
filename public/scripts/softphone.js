@@ -327,7 +327,7 @@ $(function() {
       desk.interaction.cti.enableClickToDial();
       desk.interaction.cti.onClickToDial(startCall);
       console.log('Setting Desk Softphone Initial Params');
-      desk.interaction.cti.setSoftphoneHeight(400);
+      desk.interaction.cti.setSoftphoneHeight(500);
       desk.interaction.cti.setSoftphoneWidth(200);
       SP.functions.ready();
     });
