@@ -200,6 +200,10 @@ input {
     inset 0 -1px 0px #d6d6d6;
 }
 
+.numtxt {
+  font-size:8px;
+}
+
 .number.ast {
   font-size: 33px;
   line-height: 32px;
