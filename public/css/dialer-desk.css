@@ -1,9 +1,9 @@
 body {
-  background-color:#343c44;
+  background-color:#353c45;
 }
 
 #wrapper {
-  background-color:#343c44;
+  background-color:#353c45;
 }
 
 #softphone {
@@ -44,7 +44,8 @@ div.agent-status {
 }
 
 .agent-status.ready {
-
+  background-image:none;
+  background-color:#00b15a;
 }
 
 .agent-status.ready[disabled] {
@@ -52,7 +53,8 @@ div.agent-status {
 }
 
 .agent-status.not-ready {
-
+  background-image:none;
+  background-color:#00b15a;
 }
 
 .agent-status.not-ready[disabled] {
@@ -64,7 +66,7 @@ div.agent-status {
 }
 
 input {
-  background-color:#343c44;
+  background-color:#353c45;
   border: 1px solid #59616d;
   text-shadow: none;  
   text-align: center;
@@ -102,7 +104,7 @@ input {
   font-size: 21px;
   width: 33.333333333%;
   background-image: none;
-  background-color:#343c44;
+  background-color:#353c45;
   border-bottom: 1px solid #59616d;
   border-right: 1px solid #59616d;
   text-shadow: none;
