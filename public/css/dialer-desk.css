@@ -46,32 +46,40 @@ div.agent-status {
   text-shadow: none;  
   text-align: center;
   box-shadow: none;
+  color:#fff;
   background-image:none;
   background-color:#353c45;
+  border: 1px solid #59616d;
 }
 
 .agent-status.ready[disabled] {
   text-shadow: none;  
   text-align: center;
   box-shadow: none;
+  color:#fff;
   background-image:none;
   background-color:#00b15a;
+  border: 1px solid #59616d;
 }
 
 .agent-status.not-ready {
   text-shadow: none;  
   text-align: center;
   box-shadow: none;
+  color:#fff;
   background-image:none;
   background-color:#353c45;
+  border: 1px solid #59616d;
 }
 
 .agent-status.not-ready[disabled] {
   text-shadow: none;  
   text-align: center;
   box-shadow: none;
+  color:#fff;
   background-image:none;
   background-color:#ff2240;
+  border: 1px solid #59616d;
 }
 
 #dialer {
