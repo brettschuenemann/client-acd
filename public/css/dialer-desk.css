@@ -42,8 +42,6 @@ div.agent-status {
 }
 
 .agent-status:hover {
-  background-image: none;
-  background-color: #0095de;
 }
 
 .agent-status[disabled] {
@@ -58,6 +56,11 @@ div.agent-status {
   background-image:none;
   background-color:#353c45;
   border: 1px solid #59616d;
+}
+
+.agent-status.ready:hover {
+  background-image: none;
+  background-color: #0095de;
 }
 
 .agent-status.ready[disabled] {
@@ -80,6 +83,11 @@ div.agent-status {
   background-image:none;
   background-color:#353c45;
   border: 1px solid #59616d;
+}
+
+.agent-status.not-ready:hover {
+  background-image: none;
+  background-color: #0095de;
 }
 
 .agent-status.not-ready[disabled] {
