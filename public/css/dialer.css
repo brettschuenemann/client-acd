@@ -202,11 +202,11 @@ input {
 }
 
 .numtxt {
+  display:inline-block;
   font-size:8px;
   margin:0px;
-  margin-top:-20px;
   padding:0px;
-  line-height:8px;
+  line-height:6px;
 }
 
 .number.ast {
