@@ -177,14 +177,14 @@ input {
 }
 
 .number {
-  border: 1px solid white;
-  color: #3B3B3B;
+  color: #ccc;
+  font-weight: 300;
   cursor: pointer;
   display: inline-block;
-  height: 20px;
-  padding-top: 6px;
-  margin-bottom: 4px;
-  width: 55px;
+  height: 38px;
+  line-height: 38px;
+  font-size: 21px;
+  width: 33.333333333%;
   background-image: linear-gradient(bottom, #e9e9e9 20%, #e5e5e5 72%);
   background-image: -o-linear-gradient(bottom, #e9e9e9 20%, #e5e5e5 72%);
   background-image: -moz-linear-gradient(bottom, #e9e9e9 20%, #e5e5e5 72%);
