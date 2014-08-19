@@ -47,7 +47,6 @@ div.agent-status {
 
 .agent-status.ready {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -63,7 +62,6 @@ div.agent-status {
 
 .agent-status.ready[disabled] {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -74,7 +72,6 @@ div.agent-status {
 
 .agent-status.not-ready {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -90,7 +87,6 @@ div.agent-status {
 
 .agent-status.not-ready[disabled] {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -148,6 +144,10 @@ input {
   text-shadow: none;
   text-align: center;
   box-shadow: none;
+}
+
+.numtxt {
+  text-transform: uppercase;
 }
 
 .number.ast {
