@@ -49,7 +49,8 @@ div.agent-status {
 }
 
 .agent-status.ready[disabled] {
-
+  background-image:none;
+  background-color:#353c45;
 }
 
 .agent-status.not-ready {
@@ -58,7 +59,8 @@ div.agent-status {
 }
 
 .agent-status.not-ready[disabled] {
-
+  background-image:none;
+  background-color:#353c45;
 }
 
 #dialer {
