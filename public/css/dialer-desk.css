@@ -39,6 +39,11 @@ div.agent-status {
 
 }
 
+.agent-status:hover {
+  background-image: none;
+  background-color: #0095de;
+}
+
 .agent-status[disabled] {
 }
 
