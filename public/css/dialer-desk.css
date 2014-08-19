@@ -129,14 +129,6 @@ input {
 }
 
 .number {
-  color: #ccc;
-  font-weight: 300;
-  cursor: pointer;
-  display: inline-block;
-  height: 38px;
-  line-height: 38px;
-  font-size: 21px;
-  width: 33.333333333%;
   background-image: none;
   background-color:#353c45;
   border-bottom: 1px solid #59616d;
