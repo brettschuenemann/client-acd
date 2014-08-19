@@ -40,8 +40,6 @@ div.agent-status {
 }
 
 .agent-status[disabled] {
-  background-image:none;
-  background-color:#353c45;
 }
 
 .agent-status.ready {
