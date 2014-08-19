@@ -115,6 +115,7 @@ input {
 }
 
 .number:hover {
+  background-image: none;
   background-color: #0095de;
 }
 
