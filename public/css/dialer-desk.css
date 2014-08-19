@@ -43,21 +43,33 @@ div.agent-status {
 }
 
 .agent-status.ready {
+  text-shadow: none;  
+  text-align: center;
+  box-shadow: none;
   background-image:none;
   background-color:#353c45;
 }
 
 .agent-status.ready[disabled] {
+  text-shadow: none;  
+  text-align: center;
+  box-shadow: none;
   background-image:none;
   background-color:#00b15a;
 }
 
 .agent-status.not-ready {
+  text-shadow: none;  
+  text-align: center;
+  box-shadow: none;
   background-image:none;
   background-color:#353c45;
 }
 
 .agent-status.not-ready[disabled] {
+  text-shadow: none;  
+  text-align: center;
+  box-shadow: none;
   background-image:none;
   background-color:#ff2240;
 }
