@@ -181,7 +181,7 @@ input {
   font-weight: 300;
   cursor: pointer;
   display: inline-block;
-  height: 38px;
+  height: 45px;
   line-height: 38px;
   font-size: 21px;
   width: 33.333333333%;
@@ -202,6 +202,8 @@ input {
 
 .numtxt {
   font-size:8px;
+  margin:0px;
+  padding:0px;
 }
 
 .number.ast {
