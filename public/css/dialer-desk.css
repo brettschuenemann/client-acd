@@ -36,7 +36,9 @@ div.agent-status {
 }
 
 .agent-status:active, .agent-status:focus {
-
+  box-shadow: none;
+  opacity: 1;
+  text-shadow: none;
 }
 
 .agent-status:hover {
