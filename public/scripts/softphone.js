@@ -504,12 +504,13 @@ $(function() {
             sforce.interaction.setVisible(true);  //pop up CTI console
             //var result = JSON.parse(response.result);
             var cleanednumber = cleanFormatting(response.result.number);
+            var inboundnum = cleanInboundTwilioNumber(response.result.number);
             //alert("cleanednumber = " + cleanednumber);
             params = {"PhoneNumber": cleanednumber, "CallerId": $("#callerid-entry > input").val()};
             Twilio.Device.connect(params);
             $("#number-entry 'input'").placeholder(cleanednumber);
-            desk.interaction.searchAndScreenPop(cleanednumber, 'object=customer');
-
+            desk.interaction.searchAndScreenPop(inboundnum, 'object=customer');
+            
     }
 
     var saveLogcallback = function (response) {
