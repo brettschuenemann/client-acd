@@ -49,8 +49,9 @@ $(function() {
   desk.ready(function() {
      var $win = $(window);
       var $phone = $('#softphone');
-        var width = 300;
-        var height = 400;
+        var width = 400;
+        var height = 600;
+        console.log(im here)
         desk.interaction.cti.setSoftphoneWidth(width);
         desk.interaction.cti.setSoftphoneHeight(height);
     });
