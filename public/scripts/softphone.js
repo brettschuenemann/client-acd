@@ -509,7 +509,7 @@ $(function() {
             //alert("cleanednumber = " + cleanednumber);
             params = {"PhoneNumber": cleanednumber, "CallerId": $("#callerid-entry > input").val()};
             Twilio.Device.connect(params);
-            $(#number-entry 'input').placeholder(cleanednumber);
+            $("#number-entry 'input'").placeholder(cleanednumber);
 
     }
 
