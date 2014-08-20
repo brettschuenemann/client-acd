@@ -500,8 +500,8 @@ $(function() {
 
             //called onClick2dial
             sforce.interaction.setVisible(true);  //pop up CTI console
-            var result = JSON.parse(response.result);
-            var cleanednumber = cleanFormatting(result.number);
+            //var result = JSON.parse(response.result);
+            var cleanednumber = cleanFormatting(response.result.number);
 
 
             //alert("cleanednumber = " + cleanednumber);
