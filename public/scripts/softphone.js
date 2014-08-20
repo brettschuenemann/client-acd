@@ -47,13 +47,13 @@ $(function() {
     }
 
   desk.ready(function() {
-     var $win = $(window);
-      var $phone = $('#softphone');
-        var width = 300;
-        var height = 800;
-        console.log('im here');
-        desk.interaction.cti.setSoftphoneWidth(width);
-        desk.interaction.cti.setSoftphoneHeight(height);
+        //var $win = $(window);
+        //var $phone = $('#softphone');
+        //var width = 300;
+        //var height = 800;
+        //console.log('im here');
+        //desk.interaction.cti.setSoftphoneWidth(width);
+        //desk.interaction.cti.setSoftphoneHeight(height);
     });
 
 
@@ -327,8 +327,8 @@ $(function() {
       sforce.interaction.cti.onClickToDial(startCall);
       desk.interaction.cti.enableClickToDial();
       desk.interaction.cti.onClickToDial(startCall);
-      desk.interaction.cti.setSoftphoneHeight(500);
-      desk.interaction.cti.setSoftphoneWidth(200);
+      desk.interaction.cti.setSoftphoneHeight(600);
+      desk.interaction.cti.setSoftphoneWidth(250);
       SP.functions.ready();
     });
 
