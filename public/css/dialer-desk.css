@@ -36,20 +36,17 @@ div.agent-status {
 }
 
 .agent-status:active, .agent-status:focus {
+
+}
+
+.agent-status[disabled] {
   box-shadow: none;
   opacity: 1;
   text-shadow: none;
 }
 
-.agent-status:hover {
-}
-
-.agent-status[disabled] {
-}
-
 .agent-status.ready {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -65,7 +62,6 @@ div.agent-status {
 
 .agent-status.ready[disabled] {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -76,7 +72,6 @@ div.agent-status {
 
 .agent-status.not-ready {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -92,7 +87,6 @@ div.agent-status {
 
 .agent-status.not-ready[disabled] {
   text-shadow: none;  
-  text-align: center;
   box-shadow: none;
   opacity: 1;
   color:#fff;
@@ -135,14 +129,6 @@ input {
 }
 
 .number {
-  color: #ccc;
-  font-weight: 300;
-  cursor: pointer;
-  display: inline-block;
-  height: 38px;
-  line-height: 38px;
-  font-size: 21px;
-  width: 33.333333333%;
   background-image: none;
   background-color:#353c45;
   border-bottom: 1px solid #59616d;
@@ -150,6 +136,10 @@ input {
   text-shadow: none;
   text-align: center;
   box-shadow: none;
+}
+
+.numtxt {
+  text-transform: uppercase;
 }
 
 .number.ast {
