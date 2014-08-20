@@ -431,7 +431,7 @@ $(function() {
       //sfdc screenpop fields are specific to new contact screenpop
       console.log(inboundnum);
       sforce.interaction.searchAndScreenPop(inboundnum, 'con10=' + inboundnum + '&con12=' + inboundnum + '&name_firstcon2=' + name,'inbound');
-      desk.interaction.searchAndScreenPop(inboundnum, 'objectType=customer');
+      desk.interaction.searchAndScreenPop(inboundnum, 'object=customer');
 
     });
 
